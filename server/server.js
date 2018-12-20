@@ -4,9 +4,6 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 // you'll of course want static middleware so your browser can request things like your 'bundle.js'
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
@@ -30,3 +27,5 @@ app.use(function(err, req, res, next) {
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
+
+module.exports = app;

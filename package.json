@@ -4,8 +4,8 @@
   "description": "",
   "main": "./client/index.js",
   "scripts": {
-    "start": "node server/server",
-    "start-dev": "webpack -w & nodemon server/server.js",
+    "start": "node server/start",
+    "start-dev": "webpack -w & nodemon server/start.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kimberley Elcess",
@@ -23,13 +23,18 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "pg": "^7.7.1",
+    "pg-hstore": "^2.3.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^4.42.0"
   }
 }
