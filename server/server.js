@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const db = require('../db/db.js');
+const passport = require('passport');
 
 // configure and create our database store
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -28,6 +29,8 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
 
 // api routes
 app.use('/api', require('./apiRoutes')); // matches all requests to /api
