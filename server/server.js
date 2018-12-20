@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const db = require('../db/db.js');
+const User = require('../db/User');
 const passport = require('passport');
 
 // configure and create our database store
@@ -31,6 +32,20 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Serialize / deserialize user
+passport.serializeUser((user, done) => {
+  try {
+    done(null, user.id);
+  } catch (err) {
+    done(err);
+  }
+});
+passport.deserializeUser((id, done) => {
+  User.findById(id)
+    .then(user => done(null, user))
+    .catch(done);
+});
 
 // api routes
 app.use('/api', require('./apiRoutes')); // matches all requests to /api
