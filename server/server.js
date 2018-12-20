@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const db = require('../db/db.js');
-const User = require('../db/User');
+const User = require('../db/User.js');
 const passport = require('passport');
 
 // configure and create our database store
@@ -49,6 +49,18 @@ passport.deserializeUser((id, done) => {
 
 // api routes
 app.use('/api', require('./apiRoutes')); // matches all requests to /api
+
+// login route
+app.use('./login', require('./routes/login'));
+
+// signup route
+app.use('./signup', require('./routes/signup'));
+
+// logout route
+app.use('./logout', require('./routes/logout'));
+
+// get user route
+app.use('./me', require('./routes/getme'));
 
 // Make sure this is right at the end of your server logic!
 // The only thing after this might be a piece of middleware to serve up 500 errors for server problems
