@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../../db/User');
 
-// already in './login'
+// already in '/login'
 router.put('/', (req, res, next) => {
   User.findOne({
     where: {
@@ -11,7 +11,7 @@ router.put('/', (req, res, next) => {
   })
     .then(user => {
       if (!user) res.status(401).send('User not found');
-      else if (!user.hasMatchingPassword(req.body.password))
+      else if (!user.correctPassword(req.body.password))
         res.status(401).send('Incorrect password');
       else {
         req.login(user, err => {

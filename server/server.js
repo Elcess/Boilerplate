@@ -51,16 +51,16 @@ passport.deserializeUser((id, done) => {
 app.use('/api', require('./apiRoutes')); // matches all requests to /api
 
 // login route
-app.use('./login', require('./routes/login'));
+app.use('/login', require('./routes/login'));
 
 // signup route
-app.use('./signup', require('./routes/signup'));
+app.use('/signup', require('./routes/signup'));
 
 // logout route
-app.use('./logout', require('./routes/logout'));
+app.use('/logout', require('./routes/logout'));
 
 // get user route
-app.use('./me', require('./routes/getme'));
+app.use('/me', require('./routes/getme'));
 
 // Make sure this is right at the end of your server logic!
 // The only thing after this might be a piece of middleware to serve up 500 errors for server problems

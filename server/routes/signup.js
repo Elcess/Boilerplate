@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../../db/User');
+const User = require('../../db/User.js');
 
-// already in './signup'
+// already in '/signup'
 router.post('/', (req, res, next) => {
   User.create(req.body)
     .then(user => {
