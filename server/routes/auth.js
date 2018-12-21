@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV === 'development') {
+  require('../../localSecrets');
+}
+
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
@@ -6,7 +10,8 @@ const User = require('../../db/User');
 
 // collect our google configuration into an object
 const googleConfig = {
-  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientID:
+    '1049128604299-9eer9a4sno7aeqpfko4sq85cj5dbbnii.apps.googleusercontent.com',
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: process.env.GOOGLE_CALLBACK,
 };
@@ -49,3 +54,5 @@ router.get(
     failureRedirect: '/login',
   })
 );
+
+module.exports = router;
