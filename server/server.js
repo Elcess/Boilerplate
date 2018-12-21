@@ -53,6 +53,9 @@ app.use('/api', require('./apiRoutes')); // matches all requests to /api
 // login route
 app.use('/login', require('./routes/login'));
 
+// third party login
+app.use('/auth', require('./routes/auth'));
+
 // signup route
 app.use('/signup', require('./routes/signup'));
 

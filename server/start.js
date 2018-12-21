@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV === 'development') {
+  require('../localSecrets');
+}
+
 const db = require('../db/db');
 const app = require('./server');
 
